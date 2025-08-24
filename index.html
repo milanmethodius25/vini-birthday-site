@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Vini</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- Landing Page -->
+    <div id="landing">
+        <div id="candle">
+            <div id="flame" title="Click to blow out the candle"></div>
+        </div>
+        <p>Click the flame to blow it out</p>
+    </div>
+
+    <!-- Message + Memories Button -->
+    <div id="message">
+        🎉 காணின் குவளை கவிழ்ந்து நிலன்நோக்கும்
+        மாணிழை கண்ணொவ்வேம் என்று.
+        ! 🎉
+    </div>
+
+    <!-- Popup Message -->
+    <div class="popup" id="popup">
+        <img src="assets/images/ViniPhoto.png" alt="Vini's photo" class="popup-photo" />
+        <h2>Dear Vini,</h2>
+        <p>You are amazing! 💖<br>Happy Birthday!</p>
+        <br>
+        <button onclick="viewMemories()">View Our Memories</button>
+    </div>
+
+
+    <!-- Slideshow -->
+    <div id="slideshow">
+        <img id="slideImage" src="" alt="memory photo" />
+        <div class="slideshow-controls">
+            <button onclick="previousSlide()">Previous</button>
+            <button id="nextButton" onclick="nextSlide()">Next</button>
+            <button id="closeButton" onclick="closeSlideshow()" style="display: none;">Close</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
