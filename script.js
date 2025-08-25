@@ -36,10 +36,24 @@ flame.addEventListener('click', () => {
     landing.style.display = 'none';
     message.style.display = 'block';
 
+    // Play balloon burst sound, then celebration music
+    const balloonSfx = document.getElementById('balloonSfx');
+    const celebrationBgm = document.getElementById('celebrationBgm');
+
+    // Stop/rewind in case of repeated use
+    balloonSfx.currentTime = 0;
+    celebrationBgm.currentTime = 0;
+    celebrationBgm.loop = false;
+    balloonSfx.play();
+
+    balloonSfx.onended = function () {
+        celebrationBgm.loop = true;
+        celebrationBgm.play();
+    };
+
     setTimeout(() => {
         popup.style.display = 'block';
     }, 1000);
-
     // Add confetti
     for (let i = 0; i < 100; i++) {
         const confetti = document.createElement('div');
@@ -60,8 +74,23 @@ function closePopup() {
 // View memories (button inside popup)
 function viewMemories() {
     closePopup();
+
+    // Stop the other celebration music (from candle blow)
+    const celebrationBgm = document.getElementById('celebrationBgm');
+    if (celebrationBgm) {
+        celebrationBgm.pause();
+        celebrationBgm.currentTime = 0;
+    }
+
+    // Play the slideshow music
+    const bgm = document.getElementById('bgm');
+    bgm.currentTime = 0;
+    bgm.loop = true;
+    bgm.play();
+
     startSlideshow();
 }
+
 
 let viewedPhotos = new Set();
 
@@ -96,12 +125,12 @@ function previousSlide() {
     showSlide(currentPhoto);
 }
 
-//Close slideshow
-function closeSlideshow() {
-    slideshow.style.display = 'none';
-    currentPhoto = 0;
-    viewedPhotos.clear(); // Optional: Reset viewed state if restarting slideshow
-}
+// //Close slideshow
+// function closeSlideshow() {
+//     slideshow.style.display = 'none';
+//     currentPhoto = 0;
+//     viewedPhotos.clear(); // Optional: Reset viewed state if restarting slideshow
+// }
 
 function closeSlideshow() {
     slideshow.style.display = 'none';
@@ -126,6 +155,11 @@ function closeSlideshow() {
         heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
         document.body.appendChild(heart);
     }
+
+    const bgm = document.getElementById('bgm');
+    bgm.pause();
+    bgm.currentTime = 0;
+
 }
 
 // function closeSlideshow() {
