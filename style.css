@@ -48,12 +48,27 @@ html {
     }
 }
 
-#message {
+/* #message {
     display: none;
     text-align: center;
     font-size: 2em;
     animation: fadeIn 2s ease-in;
     padding-top: 40px;
+} */
+
+#message {
+    display: none;
+    text-align: center;
+    font-size: 2em;
+    animation: fadeIn 2s ease-in;
+    padding: 40px 10vw 0 10vw;
+    /* Responsive horizontal padding */
+    max-width: 90vw;
+    /* Responsive width */
+    margin: 0 auto;
+    box-sizing: border-box;
+    z-index: 1;
+    /* Ensure it's below popups */
 }
 
 @keyframes fadeIn {
@@ -85,7 +100,7 @@ html {
     }
 }
 
-.popup {
+/* .popup {
     display: none;
     position: fixed;
     top: 50%;
@@ -99,6 +114,30 @@ html {
     z-index: 999;
     text-align: center;
     max-width: 80%;
+} */
+
+/* Make popup more responsive and avoid overlap */
+.popup {
+    display: none;
+    position: fixed;
+    top: 55%;
+    /* Moved slightly lower for message visibility */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: black;
+    padding: 30px 5vw;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    z-index: 999;
+    text-align: center;
+    max-width: 90vw;
+    width: 400px;
+    min-width: 200px;
+    box-sizing: border-box;
+    max-height: 80vh;
+    /* Allow scrolling on overflow */
+    overflow-y: auto;
 }
 
 .popup-photo {
@@ -206,5 +245,20 @@ html {
     100% {
         transform: translateY(100vh) rotate(45deg);
         opacity: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    #message {
+        font-size: 1.2em;
+        padding: 30px 4vw 0 4vw;
+    }
+
+    .popup {
+        width: 96vw;
+        padding: 18px 2vw;
+        font-size: 1em;
+        top: 62%;
+        /* Place popup lower for small screens */
     }
 }
